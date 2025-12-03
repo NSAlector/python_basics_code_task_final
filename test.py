@@ -23,7 +23,7 @@ if __name__=="__main__":
             print(f"Обработка: {filename}")
             io_obj.read(filepath)
             if io_obj.data is not None:
-                hashBase.add(io_obj)
+                hashBase[None] = io_obj
      
     hashBase.json_save(output_file)
     print(f"Результат сохранен в {output_file}")

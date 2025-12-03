@@ -16,22 +16,20 @@ class HashBase:
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(self.table, f, indent=4)
                 
-        except:
-            print("Ошибка при сохранении json фалйа")
+        except Exception as e:
+            print(f"Ошибка при сохранении json фалйа: {e}")
     def __getitem__ (self, key: int):
         return self.table.get(key)
     def __setitem__ (self, key: int, data: IODataBase):
-        self.table[key] = data.filepath
+        if key is None or 0:
+            try:
+                key = self.key_coder.calc_sum(data)
+                self.table[key] = data.filepath
+            
+            except:
+                print("Ошибка при добавлении!")
+        else:    
+            self.table[key] = data.filepath
     def __delitem__ (self, key: int):
         if key in self.table:
             del self.table[key]
-    def add(self, data: IODataBase):
-        try:
-            key = self.key_coder.calc_sum(data)
-            self[key] = data
-            return True
-            
-        except:
-            print("Ошибка при добавлении!")
-            return False
-    
