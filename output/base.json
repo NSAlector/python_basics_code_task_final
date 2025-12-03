@@ -1,0 +1,6 @@
+{
+    "0": "dataset\\text2.txt",
+    "65535": "dataset\\white.png",
+    "40319": "dataset\\image.jpg",
+    "50784": "dataset\\test.png"
+}
